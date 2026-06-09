@@ -18,10 +18,10 @@ def generar_reporte_csv(query_sql, nombre_archivo):
         with engine.begin() as connection:
             df = pd.read_sql(text(query_sql), connection)
         # Asegura que el directorio de salida exista
-        if not os.path.exists('output'):
+        if not os.path.exists('outputs'):
             os.makedirs('output')
 
-        ruta = f"output/{nombre_archivo}.csv"
+        ruta = f"outputs/{nombre_archivo}.csv"
         df.to_csv(ruta, index=False, encoding='utf-8')
         print(f"✅ Generado: {ruta}")
         return True
